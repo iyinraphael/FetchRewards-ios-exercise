@@ -8,5 +8,7 @@
 import Foundation
 
 struct AllEvents: Codable {
+    
     let events: [GeekSeatEvent]
+
 }

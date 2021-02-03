@@ -15,31 +15,30 @@ class GeekSeatEventTableViewCell: UITableViewCell {
     var eventCityLabel: UILabel!
     var datetimeLabel: UILabel!
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    var seatGeekEvent: GeekSeatEvent?{
+        didSet{
+            configureCell()
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-    func configureWith(seatGeekEvent: GeekSeatEvent) {
+    func configureCell() {
      
         eventImageView = UIImageView()
         eventImageView.translatesAutoresizingMaskIntoConstraints = false
         
         eventTitleLabel = UILabel()
         eventTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        eventTitleLabel.text = seatGeekEvent.title
+        eventTitleLabel.text = seatGeekEvent?.title
         eventTitleLabel.numberOfLines = 0
         
         eventCityLabel = UILabel()
-        eventTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        eventCityLabel.text = seatGeekEvent.venue.city
+        eventCityLabel.translatesAutoresizingMaskIntoConstraints = false
+        eventCityLabel.text = seatGeekEvent?.venue.city
         
         datetimeLabel = UILabel()
         datetimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        datetimeLabel.text = seatGeekEvent.datetimeLocal
+        datetimeLabel.text = seatGeekEvent?.datetimeLocal
         
         addSubview(eventImageView)
         addSubview(eventTitleLabel)

@@ -8,6 +8,7 @@
 import Foundation
 
 struct GeekSeatEvent: Codable {
+    
     let title: String
     let datetimeLocal: String
     let performers: [Performer]

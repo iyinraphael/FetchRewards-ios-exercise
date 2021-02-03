@@ -16,6 +16,8 @@
 		EBB5F6A825CA1E610094338E /* GeekSeatEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6A725CA1E610094338E /* GeekSeatEvent.swift */; };
 		EBB5F6AC25CA2DB10094338E /* AllEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6AB25CA2DB10094338E /* AllEvents.swift */; };
 		EBB5F6B325CA36AF0094338E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6B225CA36AF0094338E /* Cache.swift */; };
+		EBB5F6B725CA49C10094338E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6B625CA49C10094338E /* Observable.swift */; };
+		EBB5F6BC25CA4ADD0094338E /* SeatGeekEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6BB25CA4ADD0094338E /* SeatGeekEventViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		EBB5F6A725CA1E610094338E /* GeekSeatEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeekSeatEvent.swift; sourceTree = "<group>"; };
 		EBB5F6AB25CA2DB10094338E /* AllEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEvents.swift; sourceTree = "<group>"; };
 		EBB5F6B225CA36AF0094338E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		EBB5F6B625CA49C10094338E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		EBB5F6BB25CA4ADD0094338E /* SeatGeekEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekEventViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +68,10 @@
 			children = (
 				EB85D23925CA0518003039AF /* AppDelegate.swift */,
 				EBB5F6A625CA1E220094338E /* Model */,
-				EBB5F6A125CA0C360094338E /* Services */,
+				EBB5F6BA25CA4A890094338E /* ViewModel */,
 				EB85D25D25CA0A3E003039AF /* View */,
-				EB85D25325CA072F003039AF /* View Controller */,
+				EB85D25325CA072F003039AF /* Controller */,
+				EBB5F6A125CA0C360094338E /* Services */,
 				EBB5F6B125CA368B0094338E /* Utility */,
 				EB85D25225CA06F6003039AF /* Resources */,
 				EB85D24725CA0519003039AF /* Info.plist */,
@@ -83,12 +88,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		EB85D25325CA072F003039AF /* View Controller */ = {
+		EB85D25325CA072F003039AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				EB85D25425CA0837003039AF /* SeatGeekEventViewController.swift */,
 			);
-			path = "View Controller";
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		EB85D25D25CA0A3E003039AF /* View */ = {
@@ -120,8 +125,17 @@
 			isa = PBXGroup;
 			children = (
 				EBB5F6B225CA36AF0094338E /* Cache.swift */,
+				EBB5F6B625CA49C10094338E /* Observable.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		EBB5F6BA25CA4A890094338E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EBB5F6BB25CA4ADD0094338E /* SeatGeekEventViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,11 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB5F6B725CA49C10094338E /* Observable.swift in Sources */,
 				EBB5F6B325CA36AF0094338E /* Cache.swift in Sources */,
 				EB85D23A25CA0518003039AF /* AppDelegate.swift in Sources */,
 				EB85D25525CA0837003039AF /* SeatGeekEventViewController.swift in Sources */,
 				EBB5F6A325CA0CCC0094338E /* SeatGeekEventService.swift in Sources */,
 				EBB5F6A825CA1E610094338E /* GeekSeatEvent.swift in Sources */,
+				EBB5F6BC25CA4ADD0094338E /* SeatGeekEventViewModel.swift in Sources */,
 				EBB5F6AC25CA2DB10094338E /* AllEvents.swift in Sources */,
 				EB85D25B25CA0A38003039AF /* GeekSeatEventTableViewCell.swift in Sources */,
 			);
