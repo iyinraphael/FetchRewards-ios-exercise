@@ -22,7 +22,7 @@ enum CRUD: String {
     case delete = "DELETE"
 }
 
-class SeatGeekService {
+class SeatGeekEventService {
     
     // MARK: - Properties
 //    private let secretKey = "42a748abb31148f0b819684a13191ccd1c6a49abad7d61fd0ee42af324eb208e"
