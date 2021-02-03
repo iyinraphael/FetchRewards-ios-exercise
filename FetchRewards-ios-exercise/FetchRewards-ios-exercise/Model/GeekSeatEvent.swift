@@ -20,6 +20,7 @@ struct GeekSeatEvent: Codable {
     
     struct Venue: Codable {
         let city: String
+        let state: String
     }
 }
 

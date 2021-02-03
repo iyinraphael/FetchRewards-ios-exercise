@@ -71,8 +71,6 @@ class SeatGeekEventService {
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 let eventData = try jsonDecoder.decode(AllEvents.self, from: data)
-                print(eventData)
-                
                 completion(eventData, .success(true))
             } catch {
                 NSLog("Unable to decode SeatGeekAPI response: \(error.localizedDescription)")
