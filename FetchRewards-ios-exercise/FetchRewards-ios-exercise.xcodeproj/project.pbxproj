@@ -11,6 +11,10 @@
 		EB85D24325CA0519003039AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB85D24225CA0519003039AF /* Assets.xcassets */; };
 		EB85D24625CA0519003039AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB85D24425CA0519003039AF /* LaunchScreen.storyboard */; };
 		EB85D25525CA0837003039AF /* SeatGeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85D25425CA0837003039AF /* SeatGeekViewController.swift */; };
+		EB85D25B25CA0A38003039AF /* GeekSeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85D25A25CA0A38003039AF /* GeekSeatTableViewCell.swift */; };
+		EBB5F6A325CA0CCC0094338E /* SeatGeekService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6A225CA0CCC0094338E /* SeatGeekService.swift */; };
+		EBB5F6A825CA1E610094338E /* GeekSeatEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6A725CA1E610094338E /* GeekSeatEvent.swift */; };
+		EBB5F6AC25CA2DB10094338E /* AllEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F6AB25CA2DB10094338E /* AllEvents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		EB85D24525CA0519003039AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB85D24725CA0519003039AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB85D25425CA0837003039AF /* SeatGeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekViewController.swift; sourceTree = "<group>"; };
+		EB85D25A25CA0A38003039AF /* GeekSeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeekSeatTableViewCell.swift; sourceTree = "<group>"; };
+		EBB5F6A225CA0CCC0094338E /* SeatGeekService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekService.swift; sourceTree = "<group>"; };
+		EBB5F6A725CA1E610094338E /* GeekSeatEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeekSeatEvent.swift; sourceTree = "<group>"; };
+		EBB5F6AB25CA2DB10094338E /* AllEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEvents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				EB85D23925CA0518003039AF /* AppDelegate.swift */,
+				EBB5F6A625CA1E220094338E /* Model */,
+				EBB5F6A125CA0C360094338E /* Services */,
+				EB85D25D25CA0A3E003039AF /* View */,
 				EB85D25325CA072F003039AF /* View Controller */,
 				EB85D25225CA06F6003039AF /* Resources */,
 				EB85D24725CA0519003039AF /* Info.plist */,
@@ -75,6 +86,31 @@
 				EB85D25425CA0837003039AF /* SeatGeekViewController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		EB85D25D25CA0A3E003039AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB85D25A25CA0A38003039AF /* GeekSeatTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBB5F6A125CA0C360094338E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EBB5F6A225CA0CCC0094338E /* SeatGeekService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EBB5F6A625CA1E220094338E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBB5F6A725CA1E610094338E /* GeekSeatEvent.swift */,
+				EBB5F6AB25CA2DB10094338E /* AllEvents.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +184,10 @@
 			files = (
 				EB85D23A25CA0518003039AF /* AppDelegate.swift in Sources */,
 				EB85D25525CA0837003039AF /* SeatGeekViewController.swift in Sources */,
+				EBB5F6A325CA0CCC0094338E /* SeatGeekService.swift in Sources */,
+				EBB5F6A825CA1E610094338E /* GeekSeatEvent.swift in Sources */,
+				EBB5F6AC25CA2DB10094338E /* AllEvents.swift in Sources */,
+				EB85D25B25CA0A38003039AF /* GeekSeatTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible() 
         
+        SeatGeekService().getEventsData()
+        
         return true
     }
 
