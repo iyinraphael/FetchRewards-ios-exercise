@@ -16,6 +16,7 @@ class GeekSeatEventTableViewCell: UITableViewCell {
     var datetimeLabel: UILabel!
     var cellView: UIView!
     var cellContentView: UIView!
+    
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM YYY \nHH:mm a"
@@ -28,16 +29,8 @@ class GeekSeatEventTableViewCell: UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {
-        cellContentView = nil
-        cellView = nil
-        eventImageView = nil
-        eventTitleLabel = nil
-        eventCityAndStateLabel = nil
-        datetimeLabel = nil
-    }
-    
-    func configureCell() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         cellContentView = UIView()
         cellContentView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,14 +60,11 @@ class GeekSeatEventTableViewCell: UITableViewCell {
         
         eventTitleLabel = UILabel()
         eventTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        eventTitleLabel.text = seatGeekEvent?.title
         eventTitleLabel.numberOfLines = 0
         eventTitleLabel.font = .boldSystemFont(ofSize: 18)
         
         eventCityAndStateLabel = UILabel()
         eventCityAndStateLabel.translatesAutoresizingMaskIntoConstraints = false
-        let cityAndState = "\(seatGeekEvent?.venue.city ?? ""), \(seatGeekEvent?.venue.state ?? "")"
-        eventCityAndStateLabel.text = cityAndState
         eventCityAndStateLabel.font = .systemFont(ofSize: 15)
         eventCityAndStateLabel.textColor = .gray
         
@@ -83,9 +73,6 @@ class GeekSeatEventTableViewCell: UITableViewCell {
         datetimeLabel.font = .systemFont(ofSize: 15)
         datetimeLabel.textColor = .gray
         datetimeLabel.numberOfLines = 0
-        let date = dateFormatter.date(from: seatGeekEvent?.datetimeLocal ?? "")
-        datetimeLabel.text = dateFormatter.string(from: date ?? Date())
-        
         
         cellView.addSubview(eventImageView)
         cellView.addSubview(eventTitleLabel)
@@ -121,6 +108,25 @@ class GeekSeatEventTableViewCell: UITableViewCell {
             datetimeLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -10),
             datetimeLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -10)
         ])
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    // MARK: - Methods
+    func configureCell() {
+        eventTitleLabel.text = seatGeekEvent?.title
+        
+        let cityAndState = "\(seatGeekEvent?.venue.city ?? ""), \(seatGeekEvent?.venue.state ?? "")"
+        eventCityAndStateLabel.text = cityAndState
+        
+        let date = dateFormatter.date(from: seatGeekEvent?.datetimeLocal ?? "")
+        datetimeLabel.text = dateFormatter.string(from: date ?? Date())
+       
     }
     
 }

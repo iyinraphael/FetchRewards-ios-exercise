@@ -7,16 +7,18 @@
 
 import UIKit
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = SeatGeekViewController()
+        let vc =  SeatEventViewController()
+        let viewModel = SeatgeekViewModel()
+        vc.seatGeekEventViewModel = viewModel
         window?.rootViewController = UINavigationController(rootViewController: vc)
-        window?.makeKeyAndVisible() 
+        window?.makeKeyAndVisible()
         
         return true
     }
