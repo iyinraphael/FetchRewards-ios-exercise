@@ -16,20 +16,16 @@ class SeatEventViewController: UIViewController {
     let reuseIdentifier = "eventCell"
     let barTintColor = UIColor(red: 20/255, green: 39/255, blue: 89/255, alpha: 1)
     var allEvents = [GeekSeatEvent]()
+    var tempEvent = [GeekSeatEvent]()
 
     // MARK: - View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchBar = UISearchBar()
         searchBar.showsCancelButton = true
         searchBar.placeholder = "Search Event"
         searchBar.delegate = self
         navigationItem.titleView = searchBar
-        navigationController?.navigationBar.barTintColor = barTintColor
-        navigationController?.navigationBar.tintColor = barTintColor
-//        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.prefersLargeTitles = false
         
         seatGeekEventViewModel?.allEvent.bind { [weak self] allEvents in
             if let allEvents = allEvents {
@@ -61,6 +57,11 @@ class SeatEventViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = barTintColor
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        searchBar.text = nil
+        
         if let tableView = tableView {
             tableView.reloadData()
         }
@@ -102,14 +103,23 @@ extension SeatEventViewController: UITableViewDelegate, UITableViewDataSource {
 extension SeatEventViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         let type = searchText.lowercased()
         seatGeekEventViewModel?.searchForEventWith(type: type)
         guard let allEventFiltered =  seatGeekEventViewModel?.filteredEvents else { return }
         self.allEvents =  allEventFiltered
         self.tableView.reloadData()
     }
-    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.tableView.reloadData()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        seatGeekEventViewModel?.allEvent.bind { [weak self] allEvents in
+            if let allEvents = allEvents {
+                self?.allEvents = allEvents
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
