@@ -59,7 +59,12 @@ class SeatEventViewController: UIViewController {
     
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let tableView = tableView {
+            tableView.reloadData()
+        }
+    }
 
 }
 
@@ -78,7 +83,7 @@ extension SeatEventViewController: UITableViewDelegate, UITableViewDataSource {
         let seatGeekEvent = allEvents[indexPath.row]
         cell.seatGeekEvent = seatGeekEvent
         cell.eventImageView.loadImageUsingCache(withUrl: seatGeekEvent.performers[0].image)
-        
+    
         return cell
     }
     
@@ -86,7 +91,7 @@ extension SeatEventViewController: UITableViewDelegate, UITableViewDataSource {
         let seatGeekEvent = allEvents[indexPath.row]
         let vc = SeatGeekEventDetailViewController()
         vc.seatGeekEvent = seatGeekEvent
-        vc.allEvents = allEvents
+        vc.viewModel = seatGeekEventViewModel
         
         navigationController?.pushViewController(vc, animated: true)
         

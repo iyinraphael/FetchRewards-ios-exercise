@@ -9,8 +9,10 @@ import UIKit
 
 class GeekSeatEventTableViewCell: UITableViewCell {
     
+    
     //  MARK: - Properties
     var eventImageView: UIImageView!
+    var favoriteImageView: UIImageView!
     var eventTitleLabel: UILabel!
     var eventCityAndStateLabel: UILabel!
     var datetimeLabel: UILabel!
@@ -53,6 +55,9 @@ class GeekSeatEventTableViewCell: UITableViewCell {
         cellView.layer.isGeometryFlipped = false
        cellContentView.addSubview(cellView)
         
+        favoriteImageView = UIImageView()
+        favoriteImageView.translatesAutoresizingMaskIntoConstraints = false
+        
         eventImageView = UIImageView()
         eventImageView.translatesAutoresizingMaskIntoConstraints = false
         eventImageView.layer.cornerRadius = 10
@@ -74,7 +79,9 @@ class GeekSeatEventTableViewCell: UITableViewCell {
         datetimeLabel.textColor = .gray
         datetimeLabel.numberOfLines = 0
         
+        cellView.addSubview(favoriteImageView)
         cellView.addSubview(eventImageView)
+        cellView.insertSubview(eventImageView, belowSubview: favoriteImageView)
         cellView.addSubview(eventTitleLabel)
         cellView.addSubview(eventCityAndStateLabel)
         cellView.addSubview(datetimeLabel)
@@ -89,6 +96,11 @@ class GeekSeatEventTableViewCell: UITableViewCell {
             cellView.leadingAnchor.constraint(equalTo: cellContentView.leadingAnchor, constant: 10),
             cellView.trailingAnchor.constraint(equalTo: cellContentView.trailingAnchor, constant: -10),
             cellView.bottomAnchor.constraint(equalTo: cellContentView.bottomAnchor, constant: -10),
+            
+            favoriteImageView.topAnchor.constraint(equalTo: cellView.topAnchor),
+            favoriteImageView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 5),
+            favoriteImageView.heightAnchor.constraint(equalToConstant: 30),
+            favoriteImageView.widthAnchor.constraint(equalToConstant: 30),
             
             eventImageView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 10),
             eventImageView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 10),
@@ -114,8 +126,7 @@ class GeekSeatEventTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     
     // MARK: - Methods
     func configureCell() {
@@ -126,7 +137,12 @@ class GeekSeatEventTableViewCell: UITableViewCell {
         
         let date = dateFormatter.date(from: seatGeekEvent?.datetimeLocal ?? "")
         datetimeLabel.text = dateFormatter.string(from: date ?? Date())
-       
-    }
     
+        if seatGeekEvent?.isFavorite == true {
+            favoriteImageView.image = UIImage(named: "favorite.red")
+        } else {
+            favoriteImageView.image = nil
+        }
+        
+    }
 }

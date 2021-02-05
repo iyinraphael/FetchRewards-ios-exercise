@@ -44,5 +44,19 @@ class SeatgeekViewModel {
         guard let allEvent = allEvent.value else { return }
         filteredEvents = allEvent.filter{ $0.type == type}
     }
+    
+    func update(seatGeekEvent: GeekSeatEvent, with favorite: Bool) {
+        let geekSeatEvent = GeekSeatEvent(title: seatGeekEvent.title,
+                                          datetimeLocal: seatGeekEvent.datetimeLocal,
+                                          performers: seatGeekEvent.performers,
+                                          venue: seatGeekEvent.venue,
+                                          type: seatGeekEvent.type,
+                                          isFavorite: favorite)
+        
+        guard let index = allEvent.value?.firstIndex(of: seatGeekEvent) else { return }
+        allEvent.value?.remove(at: index)
+        allEvent.value?.insert(geekSeatEvent, at: index)
+        
+    }
 }
 

@@ -42,3 +42,24 @@ struct GeekSeatEvent: Codable {
     }
 }
 
+extension GeekSeatEvent.Performer: Equatable {
+    
+}
+
+extension GeekSeatEvent.Venue: Equatable {
+    
+}
+
+extension GeekSeatEvent: Equatable {
+    
+    static func == (lhs: GeekSeatEvent, rhs: GeekSeatEvent) -> Bool {
+        return lhs.title == rhs.title &&
+            lhs.datetimeLocal == rhs.datetimeLocal &&
+            lhs.performers == rhs.performers &&
+            lhs.venue == rhs.venue &&
+            lhs.type == rhs.type &&
+            lhs.isFavorite == rhs.isFavorite
+    }
+    
+    
+}

@@ -9,9 +9,11 @@ import UIKit
 
 class SeatGeekEventDetailViewController: UIViewController {
     
+    
     //MARK: -Properties
     var seatGeekEvent: GeekSeatEvent?
     var allEvents: [GeekSeatEvent]?
+    var viewModel: SeatgeekViewModel?
     var favoriteButton: UIButton!
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -27,11 +29,15 @@ class SeatGeekEventDetailViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
 
         if let seatGeekEvent = seatGeekEvent {
-            
+             
             favoriteButton = UIButton()
             favoriteButton.translatesAutoresizingMaskIntoConstraints = false
             favoriteButton.addTarget(self, action: #selector(isFavorite), for: .touchUpInside)
-            favoriteButton.setImage(UIImage(named: "favorite"), for: .normal)
+            if self.seatGeekEvent?.isFavorite == true {
+                favoriteButton.setImage(UIImage(named: "favorite.red"), for: .normal)
+            } else {
+                favoriteButton.setImage(UIImage(named: "favorite"), for: .normal)
+            }
             favoriteButton.tintColor = .black
             favoriteButton.isUserInteractionEnabled = true
             
@@ -93,14 +99,19 @@ class SeatGeekEventDetailViewController: UIViewController {
     
     // MARK: - Methods
     @objc func isFavorite() {
-        guard let isFavorite = seatGeekEvent?.isFavorite  else { return }
+        guard let seatGeekEvent = seatGeekEvent,
+                var isFavorite = seatGeekEvent.isFavorite else { return }
         
-        seatGeekEvent!.isFavorite = !isFavorite
+        isFavorite = !isFavorite
         
-        if seatGeekEvent!.isFavorite == true {
+        if isFavorite == true {
             favoriteButton.setImage(UIImage(named: "favorite.red"), for: .normal)
+            viewModel?.update(seatGeekEvent: seatGeekEvent, with: isFavorite)
         } else {
             favoriteButton.setImage(UIImage(named: "favorite"), for: .normal)
+            viewModel?.update(seatGeekEvent: seatGeekEvent, with: isFavorite)
         }
+    
     }
+    
 }
